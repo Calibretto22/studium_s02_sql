@@ -4,8 +4,8 @@
 
 SELECT artikel.bezeichnung, lieferant.firma 
 	FROM Artikel, lieferant, liefert
-	WHERE  artikel.artnr=liefert.artnr 
-		AND liefert.liefnr=lieferant.liefnr;
+	WHERE  artikel.artnr = liefert.artnr 
+		AND liefert.liefnr = lieferant.liefnr;
  
  #Wie viel kostet das günstigste Gerät im Sortiment?
  select min(vpreis) 
@@ -24,9 +24,9 @@ SELECT artikel.bezeichnung, lieferant.firma
 	from artikel;
  
  #Wenn man alle Artikel die geliefert wurden verkauft, wieviel Gewinn macht man dann?
- select sum(menge*(vpreis-epreis)) 
+ select sum(menge *(vpreis - epreis)) 
 	from liefert, artikel 
-	where liefert.artnr=artikel.artnr;
+	where liefert.artnr = artikel.artnr;
  
  # In welchen Orten sind die Lieferanten ansässig (Ausgabe minimal)?
  select distinct(ort) 
@@ -45,7 +45,7 @@ select firma, bezeichnung, datum
 
 #Wie viele Geräte wurden an diesem Tag geliefert 
 # ... und welchen Warenwert besitzen Sie insgesamt?
-select menge*epreis , menge
+select menge * epreis , menge
 	from liefert, artikel 
 	where datum = "2003-10-23" 
 		and liefert.artnr = artikel.artnr; 
@@ -53,10 +53,10 @@ select menge*epreis , menge
 #Von welchem Lieferanten wurden der Artikel DVD geliefert, den der Kunde Hefty gekauft hat?
 select firma 
 	from lieferant, liefert, artikel, kauft, kunde 
-	where liefert.artnr=artikel.artnr
-		and bezeichnung = "dvd" 
-		and name = "Hefty" 
-		and liefert.liefnr=lieferant.liefnr 
+	where liefert.artnr = artikel.artnr
+		and artikel.bezeichnung = "dvd" 
+		and kunde.name = "Hefty" 
+		and liefert.liefnr = lieferant.liefnr 
 		and liefert.artnr = artikel.artnr
 		and artikel.artnr = kauft.artnr
 		and kauft.kdnr = kunde.kdnr;
