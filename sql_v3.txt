@@ -44,13 +44,8 @@ select firma, bezeichnung, datum
 		and lieferant.liefnr = liefert.liefnr;
 
 #Wie viele Geräte wurden an diesem Tag geliefert 
-select menge 
-	from liefert, artikel 
-	where datum = "2003-10-23" 
-		and liefert.artnr = artikel.artnr; 
-
 # ... und welchen Warenwert besitzen Sie insgesamt?
-select menge*epreis 
+select menge*epreis , menge
 	from liefert, artikel 
 	where datum = "2003-10-23" 
 		and liefert.artnr = artikel.artnr; 
