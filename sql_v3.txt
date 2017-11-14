@@ -2,27 +2,35 @@
 
 #welche firma liefert welches produkt
 
-SELECT artikel.bezeichnung, lieferant.firma FROM Artikel, lieferant, liefert
- WHERE  artikel.artnr=liefert.artnr AND
- liefert.liefnr=lieferant.liefnr;
+SELECT artikel.bezeichnung, lieferant.firma 
+	FROM Artikel, lieferant, liefert
+	WHERE  artikel.artnr=liefert.artnr 
+		AND liefert.liefnr=lieferant.liefnr;
  
  #Wie viel kostet das günstigste Gerät im Sortiment?
- select min(vpreis) from artikel;
+ select min(vpreis) 
+	from artikel;
  
  #Wie viel Guthaben besitzen die Kunden durchschnittlich?
- select avg(guthaben) from kunde;
+ select avg(guthaben) 
+	from kunde;
  
  #Wie viele Artikel wurden insgesamt geliefert?
- select sum(menge) from liefert;
+ select sum(menge) 
+	from liefert;
  
  #Wie viele Artikel bilden das Produktportfolio?
- select count(bezeichnung) from artikel;
+ select count(bezeichnung) 
+	from artikel;
  
  #Wenn man alle Artikel die geliefert wurden verkauft, wieviel Gewinn macht man dann?
- select sum(menge*(vpreis-epreis)) from liefert, artikel where liefert.artnr=artikel.artnr;
+ select sum(menge*(vpreis-epreis)) 
+	from liefert, artikel 
+	where liefert.artnr=artikel.artnr;
  
  # In welchen Orten sind die Lieferanten ansässig (Ausgabe minimal)?
- select distinct(ort) from lieferant;
+ select distinct(ort) 
+	from lieferant;
 
  
  #zweiter übungsteil (SQL2_Folien.pdf #62)
@@ -31,25 +39,34 @@ SELECT artikel.bezeichnung, lieferant.firma FROM Artikel, lieferant, liefert
 # . Von welchem Lieferanten und was für Geräte wurden am 
 # 23.10.2003 geliefert
 # (Englisches Datumsformat: 2003-10-23)?
-select firma, bezeichnung, datum from artikel, lieferant, liefert 
-	where datum = "2003-10-23" and liefert.artnr = artikel.artnr 
-    and lieferant.liefnr = liefert.liefnr;
+select firma, bezeichnung, datum 
+	from artikel, lieferant, liefert 
+	where datum = "2003-10-23" 
+		and liefert.artnr = artikel.artnr 
+		and lieferant.liefnr = liefert.liefnr;
 
 #Wie viele Geräte wurden an diesem Tag geliefert 
-select menge from liefert, artikel 
-	where datum = "2003-10-23" and liefert.artnr = artikel.artnr; 
+select menge 
+	from liefert, artikel 
+	where datum = "2003-10-23" 
+		and liefert.artnr = artikel.artnr; 
+
 #und welchen Warenwert besitzen Sie insgesamt?
-select menge*epreis from liefert, artikel 
-	where datum = "2003-10-23" and liefert.artnr = artikel.artnr; 
+select menge*epreis 
+	from liefert, artikel 
+	where datum = "2003-10-23" 
+		and liefert.artnr = artikel.artnr; 
 
 #Von welchem Lieferanten wurden der Artikel DVD geliefert, den der Kunde Hefty gekauft hat?
-select firma from lieferant, liefert, artikel, kauft, kunde where liefert.artnr=artikel.artnr
-	and liefert.liefnr=lieferant.liefnr 
-    and bezeichnung = "dvd" 
-    and name = "Hefty" 
-    and liefert.artnr = artikel.artnr
-    and artikel.artnr = kauft.artnr
-    and kauft.kdnr = kunde.kdnr;
+select firma 
+	from lieferant, liefert, artikel, kauft, kunde 
+	where liefert.artnr=artikel.artnr
+		and bezeichnung = "dvd" 
+		and name = "Hefty" 
+		and liefert.liefnr=lieferant.liefnr 
+		and liefert.artnr = artikel.artnr
+		and artikel.artnr = kauft.artnr
+		and kauft.kdnr = kunde.kdnr;
     
 #Welcher Kunde hat an welchem Datum 199 Artikel
 #gekauft, was für Artikel waren das und was haben Sie
