@@ -1,3 +1,5 @@
+#erster Übungsteil (SQL2_Folien.pdf #59)
+
 #welche firma liefert welches produkt
 
 SELECT artikel.bezeichnung, lieferant.firma FROM Artikel, lieferant, liefert
@@ -22,6 +24,10 @@ SELECT artikel.bezeichnung, lieferant.firma FROM Artikel, lieferant, liefert
  # In welchen Orten sind die Lieferanten ansässig (Ausgabe minimal)?
  select distinct(ort) from lieferant;
 
+ 
+ #zweiter übungsteil (SQL2_Folien.pdf #62)
+ 
+ 
 # . Von welchem Lieferanten und was für Geräte wurden am 
 # 23.10.2003 geliefert
 # (Englisches Datumsformat: 2003-10-23)?
