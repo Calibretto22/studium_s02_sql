@@ -36,9 +36,7 @@ SELECT artikel.bezeichnung, lieferant.firma
  #zweiter übungsteil (SQL2_Folien.pdf #62)
  
  
-# . Von welchem Lieferanten und was für Geräte wurden am 
-# 23.10.2003 geliefert
-# (Englisches Datumsformat: 2003-10-23)?
+# . Von welchem Lieferanten und was für Geräte wurden am 23.10.2003 geliefert (Englisches Datumsformat: 2003-10-23)?
 select firma, bezeichnung, datum 
 	from artikel, lieferant, liefert 
 	where datum = "2003-10-23" 
@@ -51,7 +49,7 @@ select menge
 	where datum = "2003-10-23" 
 		and liefert.artnr = artikel.artnr; 
 
-#und welchen Warenwert besitzen Sie insgesamt?
+# ... und welchen Warenwert besitzen Sie insgesamt?
 select menge*epreis 
 	from liefert, artikel 
 	where datum = "2003-10-23" 
@@ -68,9 +66,7 @@ select firma
 		and artikel.artnr = kauft.artnr
 		and kauft.kdnr = kunde.kdnr;
     
-#Welcher Kunde hat an welchem Datum 199 Artikel
-#gekauft, was für Artikel waren das und was haben Sie
-#einzeln gekostet?
+#Welcher Kunde hat an welchem Datum 199 Artikel gekauft, was für Artikel waren das und was haben Sie einzeln gekostet?
 select name, datum, bezeichnung, vpreis, menge from kunde, kauft, artikel 
 	where menge = 199
     and kauft.artnr = artikel.artnr
