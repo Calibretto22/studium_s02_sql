@@ -32,6 +32,38 @@ ALTER TABLE Auto DROP hoehe;
 
 ALTER TABLE Auto ADD farbe CHAR(20);
 
+#Umsortierung der Spalten
 ALTER TABLE tabname ADD attributdefinition FIRST;
 
 ALTER TABLE tabname ADD attributdefinition AFTER spaltenname;
+
+#Umbenennung
+ALTER TABLE tabname1 RENAME tabname2;
+
+#Spalte a vom Typ INT nach b umbenennen:
+ALTER TABLE tabname CHANGE a b INT;
+
+#Spaltentyp von b ändern, ohne Umbennung:
+ALTER TABLE tabname MODIFY b INT;
+
+#mehrere Befehle zusammen ausführen
+#Spalte a nach DATE NOT NULL konvertieren, b von CHAR(10) nach CHAR(20) und b nach c umbenennen:
+ALTER TABLE tabname MODIFY a DATE NOT NULL, CHANGE b c CHAR(20);
+
+# Einfügen eines kompletten Datensatzes:
+# INSERT INTO tabname VALUES (wert1, wert2,...);
+INSERT INTO Auto
+ VALUES (1, “Wartburg 353”, 300, 1, 3.45, “rot”);
+
+# Einfügen eines unvollständigen Datensatzes:
+# INSERT INTO tabname(attribut1, attribut2, ...) VALUES (wert1, wert2, ...);
+INSERT INTO Auto (autonr, marke, epreis)
+ VALUES (2, “Golf”, 2000);
+ 
+# Ändern eines Datensatzes:
+#UPDATE tabname SET attribut1=wert1, [...]
+# WHERE Bedingung;
+#Wird die Where-Bedingung vergessen, werden ALLE Datensätze geändert!
+
+UPDATE Auto SET vpreis=400
+ WHERE autonr = 1;
