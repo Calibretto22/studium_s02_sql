@@ -42,3 +42,4 @@ CREATE TABLE Gehoerte (
 INSERT INTO Gehoerte values (1,2,'1985.07.02','1985.07.02');
 
 SELECT * FROM Gehoerte;
+
