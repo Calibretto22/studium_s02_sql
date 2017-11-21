@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS  Auto;
+DROP TABLE IF EXISTS Gehoerte;
+DROP TABLE IF EXISTS Auto;
+DROP TABLE IF EXISTS Vorbesitzer;
 
 CREATE TABLE Auto (
  autonr INT NOT NULL,
@@ -17,8 +19,6 @@ INSERT INTO Auto (marke, laenge) values ("Wartburg 353",3.80);
 INSERT INTO Auto (marke, laenge) values ("Golf",3.60);
 
 SELECT * FROM auto;
-
-DROP TABLE IF EXISTS Vorbesitzer;
  
 CREATE TABLE Vorbesitzer (
  vbnr INT NOT NULL AUTO_INCREMENT,
@@ -31,8 +31,14 @@ INSERT INTO Vorbesitzer values (3,"Flip");
 SELECT * FROM Vorbesitzer;
 
 CREATE TABLE Gehoerte (
- ende DATE NOT NULL,
- beginn DATE,
- vbnr INT,
  autonr INT,
- PRIMARY KEY (ende));
+ vbnr INT,
+ ende DATE NOT NULL,
+ beginn DATE, # 'yyyy.mm.dd'
+ PRIMARY KEY (ende),
+ FOREIGN KEY (autonr) REFERENCES Auto (autonr),
+ FOREIGN KEY (vbnr) REFERENCES Vorbesitzer (vbnr));
+ 
+INSERT INTO Gehoerte values (1,2,'1985.07.02','1985.07.02');
+
+SELECT * FROM Gehoerte;
