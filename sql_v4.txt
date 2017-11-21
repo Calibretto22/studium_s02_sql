@@ -1,0 +1,37 @@
+CREATE TABLE Auto (
+ autonr INT NOT NULL,
+ marke CHAR(20),
+ vpreis DOUBLE(10,2),
+ epreis DOUBLE(10,2),
+ farbe CHAR(20),
+ PRIMARY KEY (autonr)
+);
+
+
+CREATE TABLE Vorbesitzer (
+ vbnr INT NOT NULL,
+ name CHAR(20),
+ PRIMARY KEY (vbnr)
+); 	
+
+
+CREATE TABLE Gehoerte (
+ autonr INT NOT NULL,
+ vbnr INT NOT NULL,
+ beginn DATE,
+ ende DATE NOT NULL,
+ PRIMARY KEY (autonr, vbnr, ende),
+FOREIGN KEY (autonr) REFERENCES Auto (autonr),
+ FOREIGN KEY (vbnr) REFERENCES Vorbesitzer (vbnr)
+);
+
+
+ALTER TABLE Auto ADD hoehe DOUBLE(10,2);
+
+ALTER TABLE Auto DROP hoehe;
+
+ALTER TABLE Auto ADD farbe CHAR(20);
+
+ALTER TABLE tabname ADD attributdefinition FIRST;
+
+ALTER TABLE tabname ADD attributdefinition AFTER spaltenname;
