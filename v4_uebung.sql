@@ -1,4 +1,4 @@
-drop table Auto;
+DROP TABLE IF EXISTS  Auto;
 
 CREATE TABLE Auto (
  autonr INT NOT NULL,
@@ -9,13 +9,30 @@ CREATE TABLE Auto (
  PRIMARY KEY (autonr)
 );
 
-alter table Auto MODIFY autonr INT AUTO_INCREMENT; 
+ALTER TABLE Auto MODIFY autonr INT AUTO_INCREMENT; 
 
 ALTER TABLE Auto ADD laenge double(10,2); 
 
 INSERT INTO Auto (marke, laenge) values ("Wartburg 353",3.80);
 INSERT INTO Auto (marke, laenge) values ("Golf",3.60);
 
-select * from auto;
+SELECT * FROM auto;
 
-create table vorbesitzer 
+DROP TABLE IF EXISTS Vorbesitzer;
+ 
+CREATE TABLE Vorbesitzer (
+ vbnr INT NOT NULL AUTO_INCREMENT,
+ name CHAR(200),
+ PRIMARY KEY (vbnr));
+
+INSERT INTO Vorbesitzer values (2,"Willy");
+INSERT INTO Vorbesitzer values (3,"Flip");
+
+SELECT * FROM Vorbesitzer;
+
+CREATE TABLE Gehoerte (
+ ende DATE NOT NULL,
+ beginn DATE,
+ vbnr INT,
+ autonr INT,
+ PRIMARY KEY (ende));
