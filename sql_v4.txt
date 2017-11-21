@@ -68,4 +68,4 @@ INSERT INTO Auto (autonr, marke, epreis)
 UPDATE Auto SET vpreis=400
  WHERE autonr = 1;
  
-MODIFY autonr INT AUTO_INCREMENT;
+MODIFY autonr INT AUTO_INCREMENT; 
