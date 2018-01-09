@@ -17,7 +17,7 @@ select auto.marke, wartung.posten
 from auto, ist_in, wartung 
 where auto.autonr = ist_in.autonr
 and ist_in.wartnr = wartung.wartnr
-group by auto.marke; 
+group by auto.marke, wartung.posten; 
 
 # aufgabe 4: für wie viel geld wurden bereits autos eingekauft 
 select SUM(epreis) from auto;
