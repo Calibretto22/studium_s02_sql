@@ -1,15 +1,14 @@
 # vorlesung5 übungsblatt 1
 
 # aufgabe 1: ordnen sie die marke der fahrzeuge absteigend nach dem beim verkauf erzielten gewinn
-select autonr, marke, vpreis-epreis gewinn 
+select autonr, marke, vpreis-epreis Gewinn 
 from auto 
-order by gewinn DESC;
+order by Gewinn DESC;
 
 # aufgabe 2: geben sie die marke der fahrzeuge aus, die maja oder willy besessen haben
-select distinct auto.marke, auto.autonr, vorbesitzer.name 
+select auto.marke, auto.autonr, vorbesitzer.name 
 from auto, vorbesitzer, gehoerte
-where vorbesitzer.name = "Maja" 
-or vorbesitzer.name = "Willy" 
+where name in ("Maja", "Willy") 
 and vorbesitzer.vbnr = gehoerte.vbnr 
 and gehoerte.autonr = auto.autonr;
 
