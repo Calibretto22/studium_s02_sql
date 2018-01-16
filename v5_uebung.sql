@@ -22,14 +22,15 @@ group by auto.marke, wartung.posten;
 # aufgabe 4: für wie viel geld wurden bereits autos eingekauft 
 select SUM(epreis) from auto;
 
-# vorlesung5 übungsblatt 1
+# vorlesung5 übungsblatt 2
 # aufgabe 1: geben sie absteigend sortiert, die vorbesitzer des fahrzeugs an, dessen bremmsscheiben gewechselt wurden
-select distinct auto.marke, gehoerte.vbnr, vorbesitzer.name 
+select auto.marke, gehoerte.vbnr, vorbesitzer.name 
 from wartung, vorbesitzer, auto, ist_in, gehoerte 
-where wartung.posten = "Bremsscheiben" 
+where wartung.posten like "Bremsscheib%" 
 and ist_in.wartnr = wartung.wartnr 
 and vorbesitzer.vbnr = gehoerte.vbnr 
 and gehoerte.autonr = auto.autonr
+and ist_in.autonr = auto.autonr
 order by vorbesitzer.name desc;
 
 # aufgabe 2: geben sie die fahrzeuge gruppiert nach vorbesitzer an
