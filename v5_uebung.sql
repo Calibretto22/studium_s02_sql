@@ -34,9 +34,10 @@ and ist_in.autonr = auto.autonr
 order by vorbesitzer.name desc;
 
 # aufgabe 2: geben sie die fahrzeuge gruppiert nach vorbesitzer an
+# falsch
 select auto.*, vbnr from auto, vorbesitzer
 group by vorbesitzer.vbnr;
 
 # aufgabe 3: berechnen sie den durchschnittlichen gewinn beim verkauf eines fahrzeuges und benennen sie das ergebnis mit "durchschnittlicher gewinn / fahrzeug"
-select sum(vpreis-epreis) / (select count(autonr) from auto) 'durchschnittlicher gewinn / fahrzeug' from auto ;
+select avg(vpreis-epreis) AS 'durchschnittlicher gewinn / fahrzeug' from auto;
 
